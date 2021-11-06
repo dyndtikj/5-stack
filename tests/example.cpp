@@ -44,18 +44,18 @@ TEST(Stack1, PopValues) {
   EXPECT_THROW(stack.head(),std::runtime_error);
   EXPECT_THROW(stack.pop(),std::runtime_error);
 }
-
-TEST(Stack1, MoveExtensions) {
+// Некопируемый перемещаемый шаблон класса
+TEST(Stack1, MovableClass) {
   EXPECT_TRUE(std::is_move_constructible<Stack1<int>>::value);
-  EXPECT_TRUE(std::is_move_constructible<Stack1<std::string>>::value);
   EXPECT_TRUE(std::is_move_assignable<Stack1<int>>::value);
+  EXPECT_TRUE(std::is_move_constructible<Stack1<std::string>>::value);
   EXPECT_TRUE(std::is_move_assignable<Stack1<std::string>>::value);
 }
-TEST(NonCopiedStack, CopyExtensions) {
-  EXPECT_FALSE(std::is_copy_assignable<Stack1<int>>::value);
-  EXPECT_FALSE(std::is_copy_assignable<Stack1<std::string>>::value);
+TEST(Stack, NonCopyedClass) {
   EXPECT_FALSE(std::is_copy_constructible<Stack1<int>>::value);
+  EXPECT_FALSE(std::is_copy_assignable<Stack1<int>>::value);
   EXPECT_FALSE(std::is_copy_constructible<Stack1<std::string>>::value);
+  EXPECT_FALSE(std::is_copy_assignable<Stack1<std::string>>::value);
 }
 
 //--------Testing Stack2 ---------------

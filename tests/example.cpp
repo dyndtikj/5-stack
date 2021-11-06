@@ -8,8 +8,9 @@
 
 //--------Testing Stack1 ---------------
 
-
-
+TEST(Example, EmptyTest) {
+  EXPECT_TRUE(true);
+}
 
 
 

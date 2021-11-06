@@ -4,7 +4,6 @@
 #define INCLUDE_M_STACK1_HPP_
 
 #include <algorithm>
-#include <type_traits>
 #include <utility>
 
 template <typename T>

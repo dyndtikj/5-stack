@@ -4,7 +4,3 @@
 
 #include <m_stack1.hpp>
 #include <stdexcept>
-
-TEST(Example, EmptyTest) {
-    EXPECT_THROW(example(), std::runtime_error);
-}

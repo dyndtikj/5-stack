@@ -57,6 +57,5 @@ TEST(Stack, NonCopyedClass) {
   EXPECT_FALSE(std::is_copy_constructible<Stack1<std::string>>::value);
   EXPECT_FALSE(std::is_copy_assignable<Stack1<std::string>>::value);
 }
-
 //--------Testing Stack2 ---------------
 

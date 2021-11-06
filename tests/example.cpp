@@ -6,21 +6,6 @@
 #include <m_stack2.hpp>
 #include <stdexcept>
 
-class NonCopEx {
-  double data;
-
- public:
-  NonCopEx() = default;
-  NonCopEx(const NonCopEx&) = delete;
-  NonCopEx(NonCopEx&&) = default;
-  NonCopEx(double _data) :data (_data){
-  }
-  ~NonCopEx() = default;
-  auto operator=(NonCopEx&&) -> NonCopEx& = default;
-  auto operator=(const NonCopEx&) -> NonCopEx& = delete;
-  double getData() const { return this->data; }
-};
-
 //--------Testing Stack1 ---------------
 
 TEST(Stack1, Empty) {
@@ -29,7 +14,49 @@ TEST(Stack1, Empty) {
   EXPECT_THROW(stack.pop(),std::runtime_error);
 }
 
+TEST(Stack1, PushValue) {
+  Stack1<int> stack1;
+  stack1.push(5);
+  EXPECT_EQ(stack1.head(), 5);
+  Stack1<std::string> stack2;
+  std::string str{"ABCD"};
+  stack2.push(std::move(str));
+  EXPECT_EQ(stack2.head(), "ABCD");
+  int a = 10;
+  stack1.push(a);
+  EXPECT_EQ(stack1.head(), a);
+}
 
+TEST(Stack1, PopValues) {
+  Stack1<int> stack;
+  stack.push(15);
+  stack.push(20);
+  int a = 25;
+  int b = 30;
+  stack.push(a);
+  stack.push(b);
+  stack.pop();
+  EXPECT_EQ(stack.head(), 25);
+  size_t size = stack.size();
+  for (size_t i = 0; i < size; ++i) {
+    EXPECT_NO_THROW(stack.pop());
+  }
+  EXPECT_THROW(stack.head(),std::runtime_error);
+  EXPECT_THROW(stack.pop(),std::runtime_error);
+}
+
+TEST(Stack1, MoveExtensions) {
+  EXPECT_TRUE(std::is_move_constructible<Stack1<int>>::value);
+  EXPECT_TRUE(std::is_move_constructible<Stack1<std::string>>::value);
+  EXPECT_TRUE(std::is_move_assignable<Stack1<int>>::value);
+  EXPECT_TRUE(std::is_move_assignable<Stack1<std::string>>::value);
+}
+TEST(NonCopiedStack, CopyExtensions) {
+  EXPECT_FALSE(std::is_copy_assignable<Stack1<int>>::value);
+  EXPECT_FALSE(std::is_copy_assignable<Stack1<std::string>>::value);
+  EXPECT_FALSE(std::is_copy_constructible<Stack1<int>>::value);
+  EXPECT_FALSE(std::is_copy_constructible<Stack1<std::string>>::value);
+}
 
 //--------Testing Stack2 ---------------
 

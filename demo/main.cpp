@@ -1,6 +1,5 @@
 #include <m_stack1.hpp>
 #include <iostream>
-#include <stdexcept>
 
 int main() {
   Stack1<int> stack;
@@ -17,11 +16,11 @@ int main() {
   std::cout << stack.head() << " "<< stack.size() << std::endl;
   stack.pop();
 
-//  try {
-//    std::cout << stack.head() << " " << stack.size() << std::endl;
-//  } catch (std::runtime_error& ex){
-//    std::cerr << ex.what();
-//  }
+  try {
+    std::cout << stack.head() << " " << stack.size() << std::endl;
+  } catch (std::runtime_error& ex){
+    std::cerr << ex.what();
+  }
 
   return 0;
 }

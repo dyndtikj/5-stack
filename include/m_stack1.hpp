@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <utility>
+#include <stdexcept>
 
 template <typename T>
 struct Node {

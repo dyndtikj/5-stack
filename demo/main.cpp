@@ -1,5 +1,6 @@
 #include <m_stack1.hpp>
 #include <iostream>
+#include <exception>
 
 int main() {
   Stack1<int> stack;

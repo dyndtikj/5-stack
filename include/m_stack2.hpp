@@ -1,6 +1,6 @@
 // Copyright 2021 Max
 
-#ifndef M_STACK_M_STACK2_HPP
-#define M_STACK_M_STACK2_HPP
+#ifndef INCLUDE_M_STACK2_HPP_
+#define INCLUDE_M_STACK2_HPP_
 
-#endif  // M_STACK_M_STACK2_HPP
+#endif  // INCLUDE_M_STACK2_HPP_

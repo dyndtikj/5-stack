@@ -19,14 +19,14 @@ class Stack1 {
   Stack1() = default;
   Stack1(const Stack1&) = delete; // without copy
   Stack1(Stack1&&) noexcept = default;
-  ~Stack1();
+  virtual ~Stack1();
 
   auto operator=(const Stack1<T>&) -> Stack1<T>& = delete; // without copy
   auto operator=(Stack1<T>&&) noexcept -> Stack1<T>& = default;
 
-  void push(T&& value);
-  void push(const T& value);
-  void pop();
+  virtual void push(T&& value);
+  virtual void push(const T& value);
+  virtual void pop();
   const T& head() const;
   [[nodiscard]]size_t size() const;
 

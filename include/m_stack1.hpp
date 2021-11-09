@@ -24,13 +24,13 @@ class Stack1 {
   auto operator=(const Stack1<T>&) -> Stack1<T>& = delete; // without copy
   auto operator=(Stack1<T>&&) noexcept -> Stack1<T>& = default;
 
-  virtual void push(T&& value);
-  virtual void push(const T& value);
-  virtual void pop();
+  void push(T&& value);
+  void push(const T& value);
+  void pop();
   const T& head() const;
   [[nodiscard]]size_t size() const;
 
- private:
+ protected:
   Node<T>* Head = nullptr;
   size_t _size = 0;
 };
